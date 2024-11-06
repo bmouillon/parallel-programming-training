@@ -4,11 +4,9 @@
 #include <chrono>
 #include <vector>
 
-
 using namespace std;
 
 void step(float* r, const float* d, int n) {
-#pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             float v = numeric_limits<float>::infinity();
@@ -24,7 +22,7 @@ void step(float* r, const float* d, int n) {
 }
 
 int main() {
-    constexpr int n = 4000;
+    constexpr int n = 3000;
     // Generate a random graph
     vector<float> d(n * n);
     std::srand(static_cast<unsigned>(std::time(nullptr)));
